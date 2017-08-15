@@ -18,6 +18,8 @@ class Perceptron:
             return -1
 
     def train( self, point ):
-        guess = self.getOutput( point.x, point.y )
+        input = [point.x, point.y]
+        guess = self.getOutput( input )
         ans = point.label
-        
+        error = ans - guess
+        self.wagi = [ w + error * i for w, i in zip(self.wagi,input) ]
